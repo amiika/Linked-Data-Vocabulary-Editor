@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head>
+    <title resource="?this">{dcterms:title}</title>
+    <link rel="edit-form" href="?edit" />
+    <link rel="comments" href="?discussion" />
+    <link rel="version-history" href="?history" />
+    <script type="text/javascript" src="js/vocab.js"/>
+    <script type="text/javascript" src="js/rdfquerycore.js"/>
+    <script type="text/javascript" src="js/curie.js"></script>
+</head>
+<body resource="?this">
+    <article class="container">
+        <hgroup class="page-header">
+            <h1 property="dcterms:title" />
+            <h2 about="?this"><span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix">{vann:preferredNamespacePrefix}: </span><span id="namespace">{?this}#</span></h2>
+        </hgroup>
+        <section>
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#desc">Description</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#dproperties">Datatype properties</a></li>
+                <li><a href="#oproperties">Object properties</a></li>
+            </ul>
+        </section>
+        <section id="desc">
+              <h2 data-localize="common.description">Description</h2>
+              <p property="dcterms:description"></p>
+        </section>
+        <section id="classes">
+            <h2 data-localize="common.classes">Classes</h2>
+            <p>Classes defined in this namespace</p>
+            <div class="well">
+                   <ul class="list-inline" rev="rdfs:isDefinedBy">
+                        <li about="?classwell" typeof="rdfs:Class">
+                            <a href="?classwell" class="curie-link"></a>
+                        </li>
+                    </ul>
+                    
+            </div>
+            <div rev="rdfs:isDefinedBy">
+                <section class="curie-id" about="?class" typeof="rdfs:Class">
+                    <h3 class="curie">{?class}</h3>
+                    <dl>
+                        <dt>Label</dt>
+                        <dd property="rdfs:label"></dd>
+                        <dt>Comment</dt>
+                        <dd property="rdfs:comment"></dd>
+                    </dl>
+                </section>
+            </div>
+        </section>
+        <section id="dproperties">
+            <h2 data-localize="common.properties">Datatype properties</h2>
+            <p>Datatype properties defined in this namespace</p>
+            <div class="well">
+                    <ul class="list-inline" rev="rdfs:isDefinedBy">
+                        <li about="?dpropertywell" typeof="owl:DatatypeProperty">
+                            <a href="?dpropertywell" class="curie-link"></a>
+                        </li>
+                    </ul>
+            </div>
+            <div rev="rdfs:isDefinedBy">
+                <section about="?dproperty" typeof="owl:DatatypeProperty">
+                    <h2 class="curie">{?dproperty}</h2>
+                    <dl>
+                        <dt>Label</dt>
+                        <dd property="rdfs:label"></dd>
+                        <dt>Comment</dt>
+                        <dd property="rdfs:comment"></dd>
+                        <dt>Range</dt>
+                        <dd property="rdfs:range"></dd>
+                        <dt>Domain</dt>
+                        <dd property="rdfs:domain"></dd>
+                    </dl>
+                </section>
+            </div>
+        </section>
+        <section id="oproperties">
+            <h2 data-localize="common.properties">Object properties</h2>
+            <p>Object properties defined in this namespace</p>
+            <div class="well">
+                    <ul class="list-inline" rev="rdfs:isDefinedBy">
+                        <li about="?opropertywell" typeof="owl:ObjectProperty">
+                            <a href="?opropertywell" class="curie-link"></a>
+                        </li>
+                    </ul>
+            </div>
+            <div rev="rdfs:isDefinedBy">
+                <section about="?oproperty" typeof="owl:ObjectProperty">
+                    <h2 class="curie">{?oproperty}</h2>
+                    <dl>
+                        <dt>Label</dt>
+                        <dd property="rdfs:label"></dd>
+                        <dt>Comment</dt>
+                        <dd property="rdfs:comment"></dd>
+                        <dt>Range</dt>
+                        <dd property="rdfs:range"></dd>
+                        <dt>Domain</dt>
+                        <dd property="rdfs:domain"></dd>
+                    </dl>
+                </section>
+            </div>
+        </section>
+        </article>
+</body>
+</html>

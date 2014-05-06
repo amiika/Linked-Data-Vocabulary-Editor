@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head>
+    <title resource="?this">{dcterms:title}</title>
+    <script type="text/javascript" src="js/editor.js"></script>
+    <script type="text/javascript" src="js/rdfquerycore.js"/>
+    <script type="text/javascript" src="js/curie.js"></script>
+    <script type="text/javascript" src="js/camelcase.js"></script>
+    <script type="text/javascript" src="js/xeditable.js"></script>
+    <script type="text/javascript" src="js/bootbox.js"></script>
+    <link href="css/xeditable.css" rel="stylesheet"/>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script> -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="js/uri-input.js"></script>
+</head>
+<body>
+    <div class="container" resource="?this">
+    <form role="form" method="POST" action="" enctype="application/sparql-update" resource="?this">
+    <article id="vocabulary">
+        <hgroup class="page-header">
+            <h1 property="dcterms:title" />
+            <h2 about="?this"><span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix">{vann:preferredNamespacePrefix}: </span><span id="namespace">{?this}#</span></h2>
+        </hgroup>
+        <section>
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#desc">Description</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#dproperties">Datatype properties</a></li>
+                <li><a href="#oproperties">Object properties</a></li>
+            </ul>
+        </section>
+        <section id="desc">
+              <h2 data-localize="common.description">Description</h2>
+              <p property="dcterms:description"></p>
+        </section>
+        <section id="classes">
+            <h2 data-localize="common.classes">Classes<button type="button" id="addClass" class="btn btn-sm btn-link" title="Add new class"><span class="glyphicon glyphicon-plus"></span></button></h2>
+            <p>Classes defined in this namespace</p>
+            <div class="well">
+                <ul class="list-inline" rev="rdfs:isDefinedBy" id="ClassWell">
+                        <li about="?classwell" typeof="rdfs:Class">
+                            <a href="?classwell" class="curie-link"></a>
+                        </li>
+                    </ul>
+            </div>
+            <div rev="rdfs:isDefinedBy" id="ClassList">
+            <section class="panel panel-default curie-id class" about="?class" typeof="rdfs:Class">
+                <div class="panel-body">
+                 <div class="btn-group pull-right">
+                        <button type="button" class="remove btn btn-sm btn-default">Remove <span class="glyphicon glyphicon-minus"></span></button>
+                  </div><br/>
+                    <h3><span class="editable-class-identifier" property="dcterms:identifier"></span></h3>                 
+                    <span class="empty" rel="rdfs:isDefinedBy"><span resource="?this"></span></span>
+                    <dl>
+                        <dt>Label <button type="button" class="addObject btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></dt>
+                        <dd class="editable editable-label" data-type="PlainLiteral" property="rdfs:label"></dd>
+                        <dt>Comment <button type="button" class="addObject btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></dt>
+                        <dd class="editable editable-comment" data-type="PlainLiteral" property="rdfs:comment"></dd>
+                        <dt>Subclass of</dt>
+                        <dd class="editable editable-subClassOf" data-type="URIdentifier" rel="rdfs:subClassOf"><span about="?subClassOf">{?subClassOf}</span></dd>
+                    </dl>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section id="dproperties">
+            <h2 data-localize="common.properties">Datatype properties<button type="button" id="addDProp" title="Add new datatype property" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></h2>
+            <p>Datatype properties defined in this namespace</p>
+            <div class="well">
+                    <ul class="list-inline" rev="rdfs:isDefinedBy" id="DPropWell">
+                        <li about="?dwproperty" typeof="owl:DatatypeProperty">
+                            <a href="?dwproperty" class="curie-link"></a>
+                        </li>
+                    </ul>
+            </div>
+            <div rev="rdfs:isDefinedBy" id="DPropList">
+            <section class="panel panel-default"  about="?dproperty" typeof="owl:DatatypeProperty">
+        
+              
+                 <!-- <h4 class="panel-title pull-left"  style="padding-top: 7.5px;">Edit</h4> -->
+
+                <div class="panel-body">
+                
+                 <div class="btn-group pull-right">
+                        <button type="button" class="remove btn btn-sm btn-default">Remove <span class="glyphicon glyphicon-minus"></span></button>
+                  </div>
+                  <br/>
+
+                    <h3><span class="editable-property-identifier" property="dcterms:identifier"></span></h3>                 
+                    <span class="empty" rel="rdfs:isDefinedBy"><span resource="?this"></span></span>
+
+                    <dl>
+                        <dt>Label <button type="button" class="addObject btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></dt>
+                        <dd class="editable editable-label" data-type="PlainLiteral" property="rdfs:label"></dd>
+                        <dt>Comment <button type="button" class="addObject btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></dt>
+                        <dd class="editable editable-comment" data-type="PlainLiteral" property="rdfs:comment"></dd>
+                        <dt>Domain</dt>
+                        <dd class="editable editable-domain" data-type="URIdentifier"><span rel="rdfs:domain"><span about="?domain">{?domain}</span></span></dd>
+                        <dt>Range</dt>
+                        <dd class="editable editable-domain" data-type="URIdentifier"><span rel="rdfs:domain"><span about="?range">{?range}</span></span></dd>
+                    </dl>
+            
+  </div>
+</section>
+
+            </div>
+        </section>
+        <section id="oproperties">
+            <h2 data-localize="common.properties">Object properties <button title="Add new object property" type="button" id="addOProp" class="btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></h2>
+            <p>Object properties defined in this namespace</p>
+            <div class="well">
+                    <ul class="list-inline" rev="rdfs:isDefinedBy" id="OPropWell">
+                        <li about="?owproperty" typeof="owl:ObjectProperty">
+                            <a href="?owproperty" class="curie-link"></a>
+                        </li>
+                    </ul>
+            </div>
+            <div rev="rdfs:isDefinedBy" id="OPropList">
+               <section class="panel panel-default" about="?oproperty" typeof="owl:ObjectProperty">
+                    <div class="panel-body">
+                 <div class="btn-group pull-right">
+                        <button type="button" class="remove btn btn-sm btn-default">Remove <span class="glyphicon glyphicon-minus"></span></button>
+                  </div><br/>
+                    <h3><span class="editable-property-identifier" property="dcterms:identifier"></span></h3>                
+                    <dl>
+                        <dt>Label <button type="button" class="addObject btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></dt>
+                        <dd class="editable editable-label" data-type="PlainLiteral" property="rdfs:label"></dd>
+                        <dt>Comment <button type="button" class="addObject btn btn-sm btn-link"><span class="glyphicon glyphicon-plus"></span></button></dt>
+                        <dd class="editable editable-comment" data-type="PlainLiteral" property="rdfs:comment"></dd>
+                        <dt>Domain</dt>
+                        <dd class="editable editable-domain" data-type="URIdentifier"><span rel="rdfs:domain"><span about="?odomain">{?odomain}</span></span></dd>
+                        <dt>Range</dt>
+                        <dd class="editable editable-domain" data-type="URIdentifier"><span rel="rdfs:domain"><span about="?orange">{?orange}</span></span></dd>
+                    </dl>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section>
+                       <div>
+                                <button type="submit" class="btn btn-primary" data-localize="menu.save">Save</button>
+                                <button type="button" onclick="window.location.replace('?view')" class="btn btn-default" data-localize="menu.cancel">Cancel</button>
+                                <button type="button" onclick="calli.deleteResource(event)" class="btn btn-danger" data-localize="menu.delete">Delete</button>
+                            </div>
+
+        </section>
+        </article>
+        </form>
+        </div>
+</body>
+</html>
+
+<!--
+                        
+                        <div class="classtable" rev="rdfs:isDefinedBy">
+                            <span rel="rdfs:isDefinedBy"><span resource="?this"></span></span>
+                            <div about="?class" typeof="rdfs:Class">
+                                <div><span property="rdfs:label" class="editable-label"></span></div>
+                                <div><span property="rdfs:comment" class="editable-label"></span></div>
+                            </div>
+                        </div>
+                        
+                        -->
+                    
+                        <!--
+                             <table class="table table-striped">
+                             <thead>
+                                <tr>
+                                    <th class="col-sm-3" data-localize="common.property"></th>
+                                    <th class="col-sm-7" data-localize="common.values">Comment</th>
+                                    <th class="col-sm-7" data-localize="common.values">Domain</th>
+                                    <th class="col-sm-7" data-localize="common.values">Range</th>
+                                </tr>
+                                </thead>
+                                <tbody class="classtable" rev="rdfs:isDefinedBy">
+                                <tr about="?class" typeof="rdfs:Class">
+                                    <td><span rel="rdfs:isDefinedBy"><span resource="?this"></span></span><span property="rdfs:label" class="editable-label"></span></td>
+                                    <td><span property="rdfs:comment" class="editable-comment"></span></td>
+                                    <td><span property="rdfs:domain" class="editable-domain" data-type="url"></span></td>
+                                    <td><span property="rdfs:range" class="editable-range" data-type="url"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            
+                            -->
+                        <!--
+                           <ul class="list-inline" rev="rdfs:isDefinedBy">
+                                <li about="?class" typeof="rdfs:Class">
+                                    <a href="{?class}?edit" class="curie">{?class}</a>
+                                </li>
+                            </ul>
+                        -->
+                      
+
+            
+                  
