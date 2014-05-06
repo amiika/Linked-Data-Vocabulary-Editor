@@ -13,4 +13,4 @@ Install instructions:
 
 Issues:
 
-* ?
+* Probably many :)
