@@ -1,0 +1,69 @@
+.controls-group {
+width: 100%;
+}
+
+.controls {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.area-lang-select {
+    margin-top: 19px;
+}
+
+.resize {
+    resize:vertical;
+}
+
+.addremove {
+ margin: 5px;   
+}
+
+.addRow {
+ margin: 5px;   
+}
+
+.removeRow {
+ margin: 5px;   
+ vertical-align:middle;
+}
+
+
+.property-input-lang { 
+    margin-bottom: 5px;
+}
+
+.property-input {
+    margin-bottom: 5px;
+}
+
+.inline {
+display: inline;
+}
+
+.add {
+ float: left;
+}
+.full {
+ width: 100%;   
+}
+
+.badge-error {
+  background-color: #b94a48;
+}
+.badge-warning {
+  background-color: #f89406;
+}
+.badge-success {
+  background-color: #468847;
+}
+.badge-info {
+  background-color: #3a87ad;
+}
+
+.table-view {
+  border-spacing: 20 20px;
+  border-collapse:separate;
+  empty-cells:show;
+  border: none;
+}

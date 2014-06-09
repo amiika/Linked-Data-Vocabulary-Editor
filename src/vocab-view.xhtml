@@ -22,21 +22,23 @@
             <h2 about="?this"><span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix">{vann:preferredNamespacePrefix}: </span><span id="namespace">{?this}#</span></h2>
         </hgroup>
         <section>
-            <h2>Table of Contents</h2>
+            <h2 data-localize="common.toc">Table of Contents</h2>
             <ul>
-                <li><a href="#desc">Description</a></li>
-                <li><a href="#classes">Classes</a></li>
-                <li><a href="#dproperties">Datatype properties</a></li>
-                <li><a href="#oproperties">Object properties</a></li>
+                <li><a href="#desc" data-localize="common.description">Description</a></li>
+                <li><a href="#classes" data-localize="common.classes">Classes</a></li>
+                <li><a href="#dproperties" data-localize="common.datatypeProperties">Datatype properties</a></li>
+                <li><a href="#oproperties" data-localize="common.objectProperties">Object properties</a></li>
             </ul>
         </section>
+        <hr/>
         <section id="desc">
               <h2 data-localize="common.description">Description</h2>
               <p property="dcterms:description"></p>
         </section>
+        <hr/>
         <section id="classes">
             <h2 data-localize="common.classes">Classes</h2>
-            <p>Classes defined in this namespace</p>
+            <p  data-localize="class.description">Classes defined in this namespace</p>
             <div class="well">
                    <ul class="list-inline" rev="rdfs:isDefinedBy">
                         <li about="?classwell" typeof="rdfs:Class">
@@ -46,20 +48,23 @@
                     
             </div>
             <div rev="rdfs:isDefinedBy">
-                <section class="curie-id" about="?class" typeof="rdfs:Class">
+                <section class="panel panel-default curie-id" about="?class" typeof="rdfs:Class">
+                <div class="panel-body">
                     <h3 class="curie">{?class}</h3>
                     <dl>
-                        <dt>Label</dt>
+                        <dt data-localize="common.label">Label</dt>
                         <dd property="rdfs:label"></dd>
-                        <dt>Comment</dt>
+                        <dt data-localize="common.comment">Comment</dt>
                         <dd property="rdfs:comment"></dd>
                     </dl>
+                    </div>
                 </section>
             </div>
         </section>
+        <hr/>
         <section id="dproperties">
-            <h2 data-localize="common.properties">Datatype properties</h2>
-            <p>Datatype properties defined in this namespace</p>
+            <h2 data-localize="common.datatypeProperties">Datatype properties</h2>
+            <p  data-localize="datatypeProperty.description">Datatype properties defined in this namespace</p>
             <div class="well">
                     <ul class="list-inline" rev="rdfs:isDefinedBy">
                         <li about="?dpropertywell" typeof="owl:DatatypeProperty">
@@ -68,24 +73,27 @@
                     </ul>
             </div>
             <div rev="rdfs:isDefinedBy">
-                <section about="?dproperty" typeof="owl:DatatypeProperty">
+                <section class="panel panel-default curie-id" about="?dproperty" typeof="owl:DatatypeProperty">
+                <div class="panel-body">
                     <h2 class="curie">{?dproperty}</h2>
                     <dl>
-                        <dt>Label</dt>
+                        <dt data-localize="common.label">Label</dt>
                         <dd property="rdfs:label"></dd>
-                        <dt>Comment</dt>
+                        <dt data-localize="common.comment">Comment</dt>
                         <dd property="rdfs:comment"></dd>
                         <dt>Range</dt>
                         <dd property="rdfs:range"></dd>
                         <dt>Domain</dt>
                         <dd property="rdfs:domain"></dd>
                     </dl>
+                    </div>
                 </section>
             </div>
         </section>
+        <hr/>
         <section id="oproperties">
-            <h2 data-localize="common.properties">Object properties</h2>
-            <p>Object properties defined in this namespace</p>
+            <h2 data-localize="common.objectProperties">Object properties</h2>
+            <p  data-localize="objectProperty.description">Object properties defined in this namespace</p>
             <div class="well">
                     <ul class="list-inline" rev="rdfs:isDefinedBy">
                         <li about="?opropertywell" typeof="owl:ObjectProperty">
@@ -94,18 +102,20 @@
                     </ul>
             </div>
             <div rev="rdfs:isDefinedBy">
-                <section about="?oproperty" typeof="owl:ObjectProperty">
+                <section class="panel panel-default curie-id" about="?oproperty" typeof="owl:ObjectProperty">
+                <div class="panel-body">
                     <h2 class="curie">{?oproperty}</h2>
                     <dl>
-                        <dt>Label</dt>
+                        <dt data-localize="common.label">Label</dt>
                         <dd property="rdfs:label"></dd>
-                        <dt>Comment</dt>
+                        <dt data-localize="common.comment">Comment</dt>
                         <dd property="rdfs:comment"></dd>
                         <dt>Range</dt>
                         <dd property="rdfs:range"></dd>
                         <dt>Domain</dt>
                         <dd property="rdfs:domain"></dd>
                     </dl>
+                    </div>
                 </section>
             </div>
         </section>

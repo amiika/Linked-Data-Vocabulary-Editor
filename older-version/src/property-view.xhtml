@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head>
+    <title resource="?this">{rdfs:label}</title>
+    <link rel="edit-form" href="?edit" />
+    <link rel="comments" href="?discussion" />
+    <link rel="version-history" href="?history" />
+    <link href="css/main.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/rdfquerycore.js"/>
+    <script type="text/javascript" src="js/prefixify.js"/>
+    <script type="text/javascript" src="js/multilang.js"/>
+            <script type="text/javascript">
+        // <![CDATA[
+            history.pushState(null, null, $(location).attr('href').replace('?view',''));
+        // ]]>
+    </script>
+</head>
+<body resource="?this">
+    <div class="container">
+            <span id="isDefinedBy" rel="rdfs:isDefinedBy">
+                <span id="namespace" about="?vocabulary">
+                     <span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix"/>
+                </span>
+            </span>
+        <hgroup class="page-header">
+            <h1 class="curie">{?this}</h1>
+        </hgroup>
+        <div class="col-md-6">
+        <table class="table table-view table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-sm-2">Property</th>
+                        <th class="col-sm-8">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="property-container">
+                        <td data-localize="common.label">Label</td>
+                        <td class="form-group">
+                            <p class="append-input-lang" property="rdfs:label" />
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.comment">Comment</td>
+                        <td class="form-group">
+                            <p class="append-input-lang" property="rdfs:comment"></p>  
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.subPropertyOf">SubPropertyOf</td>
+                        <td class="form-group">
+                            <a href="{rdfs:subPropertyOf}" class="append-input-lang curie"></a> 
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.domain">Domain</td>
+                        <td class="form-group">
+                            <a href="{rdfs:domain}" class="append-input-lang curie"></a> 
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.range">Range</td>
+                        <td class="form-group">
+                            <a href="{rdfs:range}" class="append-input-lang curie"></a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+</body>
+</html>

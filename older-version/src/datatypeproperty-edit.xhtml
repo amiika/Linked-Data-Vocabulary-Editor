@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:src="http://localhost:8080/ns/src/"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head>
+    <title resource="?this">{rdfs:label}</title>
+        <link rel="stylesheet" href="css/main.css"/>
+        <script type="text/javascript" src="js/multilang.js"/>
+        <script type="text/javascript" src="js/repeatinput.js"/>
+        <script type="text/javascript" src="js/selecturl.js"/>
+        <script type="text/javascript" src="js/rdfquerycore.js"/>
+        <script type="text/javascript" src="js/prefixify.js"/>
+</head>
+<body resource="?this">
+    <div class="container">
+        <hgroup class="page-header">
+            <h1><span data-localize="menu.edit">Edit</span> <span class="curie">{?this}</span></h1>
+        </hgroup>
+            <span id="isDefinedBy" rel="rdfs:isDefinedBy">
+                <span id="namespace" about="?vocabulary">
+                     <span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix"/>
+                </span>
+            </span>
+        <form role="form" method="POST" action="" enctype="application/sparql-update" resource="?this" class="form col-md-6">
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th class="col-sm-3" data-localize="common.property">Property</th>
+                        <th class="col-sm-7" data-localize="common.values">Values</th>
+                        <th class="col-sm-2" data-localize="common.lang">Lang</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="property-container">
+                        <td><span data-localize="common.label">Label</span> <a  href="#" title="Add" class="addremove glyphicon glyphicon-refresh"></a></td>
+                        <td class="form-group">
+                            <p type="text" contentEditable="true" class="property-input form-control append-lang-edit" id="label" property="rdfs:label" />
+                        </td>
+                        <td class="form-group">
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.comment">Comment</td>
+                        <td class="form-group">
+                            <textarea placeholder="Write comment" id="comment" class="property-input form-control">{rdfs:comment}</textarea>     
+                        </td>
+                        <td/>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.subPropertyOf">SubPropertyOf</span></td>
+                        <td class="form-group">
+                            <select id="selectSubProp" class="selector form-control" rel="rdfs:subPropertyOf">
+                                    <option value="" disabled="disabled">Select</option>
+                                    <option selected="selected" about="?property" typeof="src:DatatypeProperty" property="rdfs:subPropertyOf"/>
+                            </select>
+                           <input type="url" class="property-input form-control" id="subPropertyOf" value="{rdfs:subPropertyOf}" autofocus="autofocus"/>
+                        </td>
+                        <td/>
+                    </tr>                    
+                    <tr>
+                        <td><span data-localize="common.domain">Domain</span></td>
+                        <td class="form-group">
+                            <select id="selectDomain" class="selector form-control" rel="rdfs:domain">
+                                    <option value="" disabled="disabled">Select</option>
+                                    <option selected="selected" about="?property" typeof="src:Class" property="rdfs:label"/>
+                              </select>
+                           <input type="url" class="form-control" id="domain" value="{rdfs:domain}" autofocus="autofocus"/>
+                        </td>
+                        <td/>
+                    </tr>
+                    <tr>
+                         <td><span data-localize="common.range">Range</span></td>
+                        <td class="form-group">
+                            <select id="selectRange" class="selector form-control" rel="rdfs:range">
+                                <option data-about="http://www.w3.org/2001/XMLSchema#string" selected="selected">String</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#int">Int</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#long">Long</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#date">Date</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#datetime">Datetime</option>
+                                <option data-about="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PlainLiteral</option>
+                          </select>
+                           <input type="url" class="form-control" id="range" value="{rdfs:range}" autofocus="autofocus"/>
+                        </td>
+                        <td/>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        <div class="row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary" data-localize="menu.save">Save</button>
+                    <button type="button" onclick="window.location.replace('?view')" class="btn btn-default" data-localize="menu.cancel">Cancel</button>
+                    <button type="button" onclick="calli.deleteResource(event)" class="btn btn-danger" data-localize="menu.delete">Delete</button>
+                </div>
+        </div>
+        
+        </form>
+    </div>
+</body>
+</html>

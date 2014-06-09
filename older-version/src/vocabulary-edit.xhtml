@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:src="http://localhost:8080/ns/src/"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head>
+    <title resource="?this">{dcterms:title}</title>
+    <script type="text/javascript" src="js/rdfquerycore.js"/>
+    <script type="text/javascript" src="js/prefixify.js"/>
+</head>
+<body resource="?this">
+    <span id="namespace" about="?this"/>
+    <span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix"/>
+    <div class="container">
+        <div class="well">
+        
+            <!-- NAV -->        
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#classes" data-toggle="tab" data-localize="edit.classes">Edit classes</a></li>
+              <li><a href="#properties" data-toggle="tab" data-localize="edit.properties">Edit properties</a></li>
+              <li><a href="#meta" data-toggle="tab" data-localize="edit.metadata">Edit metadata</a></li>
+            </ul>
+            
+            <!-- TAB -->
+            <div class="tab-content">
+              
+              <div class="tab-pane active" id="classes">
+                    <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix panel-primary"> 
+                            <h3 class="panel-title pull-left" style="padding-top: 5px;" data-localize="edit.classes">Edit classes</h3>
+                            <div class="btn-group pull-right">
+                                <a class="btn btn-sm btn-primary" href="?create=/ns/src/Class" data-localize="add.class">Add new class</a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                           <ul class="list-inline" rev="rdfs:isDefinedBy">
+                                <li about="?class" typeof="src:Class">
+                                    <a href="{?class}?edit" class="curie">{?class}</a>
+                                </li>
+                            </ul>
+                        </div>
+                     </div>
+                    </div>
+              </div>
+              
+              <div class="tab-pane" id="properties">
+                <div class="panel-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix panel-primary">
+                            <h3 class="panel-title pull-left" style="padding-top: 5px;" data-localize="edit.properties">Edit properties</h3>
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+                                 <span data-localize="add.property">Add new property</span> <span class="caret"></span>
+                                </button>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="?create=/ns/src/DatatypeProperty" data-localize="common.datatypeProperty">Datatype property</a></li>
+                                <li><a href="?create=/ns/src/ObjectProperty" data.localize="common.objectProperty">Object property</a></li>
+                              </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <h4 data-localize="common.datatypeProperties">Datatype properties</h4>
+                               <ul class="list-inline" rev="rdfs:isDefinedBy">
+                                    <li about="?dprop" typeof="src:DatatypeProperty">
+                                        <a href="{?dprop}?edit" class="curie">{?dprop}</a>
+                                    </li>
+                                </ul>
+                                <h4 data-localize="common.objectProperty">Object properties</h4>
+                                <ul class="list-inline" rev="rdfs:isDefinedBy">
+                                    <li about="?oprop" typeof="src:ObjectProperty">
+                                        <a href="{?oprop}?edit" class="curie">{?oprop}</a>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>               
+                  </div>
+              </div>
+              
+              <div class="tab-pane" id="meta">
+                    <div class="panel-body">
+                          <form role="form" method="POST" action="" enctype="application/sparql-update" resource="?this" class="row">
+                        <fieldset class="col-sm-4">
+                            <div class="form-group">
+                                <label for="label" data-localize="common.title">Title</label>
+                                <input type="text" class="form-control" id="label" value="{dcterms:title}" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" data-localize="common.description">Description</label>
+                                <textarea id="comment" class="form-control">{dcterms:description}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" data-localize="menu.save">Save</button>
+                                <button type="button" onclick="window.location.replace('?view')" class="btn btn-default" data-localize="menu.cancel">Cancel</button>
+                                <button type="button" onclick="calli.deleteResource(event)" class="btn btn-danger" data-localize="menu.delete">Delete</button>
+                            </div>
+                        </fieldset>
+                        </form>
+                    </div>
+              </div>     
+              
+            </div>
+        </div>
+    </div>
+</body>
+</html>

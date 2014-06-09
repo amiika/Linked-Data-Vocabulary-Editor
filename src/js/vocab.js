@@ -9,13 +9,12 @@
     
     
  $("dt").each(function(){
-     console.log($(this));
-    
     var dd = $(this).next();
     if(dd.is("dd") && dd.is(':empty')) {
-        console.log(dd);
         $(this).remove();
         dd.remove();
+    } else if(dd.is("dt") || dd.length===0) {
+        $(this).remove();
     }
  });
     

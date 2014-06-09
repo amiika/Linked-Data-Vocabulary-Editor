@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head resource="?this">
+    <title resource="?this">{rdfs:label}</title>
+        <link rel="stylesheet" href="css/main.css"/>
+        <script type="text/javascript" src="js/multilang.js"/>
+        <script type="text/javascript" src="js/repeatinput.js"/>
+        <script type="text/javascript" src="js/selecturl.js"/>
+        <script type="text/javascript" src="js/rdfquerycore.js"/>
+        <script type="text/javascript" src="js/prefixify.js"/>
+
+<script type="text/javascript">
+        // <![CDATA[
+
+        jQuery(function($){
+            
+            $("#selectPart").on('change', function() {
+            
+            console.log($('option:selected', this).data('about'));
+            console.log($(this).val());
+            
+            
+            var uri = $('option:selected', this).data('about');
+            var selected = $(this).val();
+            //$(this).val([]);
+            $('option',this).eq(0).prop('selected', true);
+            if(uri) {
+                console.log($("#parts"));
+                console.log("Appending "+selected);
+                $("#parts").append("<div class='control-group' resource='"+uri+"'><div class='controls'>"+selected+"</div><div class='controls'><a href='#' title='Add' class='btn btn-href removeGroup glyphicon glyphicon-minus'></div></div>");      }
+                $(".removeGroup").on("click",function(){$(this).closest(".control-group").remove();});
+      
+        
+        });
+            
+        });
+        
+        
+        
+        
+        // ]]>
+    </script>
+    </head>
+<body resource="?this">
+    <div class="container">
+        <hgroup class="page-header">
+            <h1><span data-localize="menu.edit">Edit</span> <span class="curie">{?this}</span></h1>
+        </hgroup>
+        <span id="isDefinedBy" rel="rdfs:isDefinedBy">
+                <span id="namespace" about="?vocabulary">
+                     <span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix"/>
+                </span>
+            </span>
+        <form role="form" method="POST" action="" enctype="application/sparql-update" resource="?this" class="form col-md-6">
+    
+                <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-sm-3" data-localize="common.property">Property</th>
+                        <th class="col-sm-7" data-localize="common.values">Values</th>
+                        <th class="col-sm-2" data-localize="common.lang">Lang</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="property-container">
+                        <td><span data-localize="common.label">Label</span> <a  href="#" title="Add" class="addremove glyphicon glyphicon-refresh"></a></td>
+                        <td class="form-group">
+                            <p type="text" contentEditable="true" class="property-input form-control append-lang-edit" id="label" property="rdfs:label" />
+                        </td>
+                        <td class="form-group">
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.comment">Comment</td>
+                        <td class="form-group">
+                            <textarea placeholder="Write comment" id="comment" class="property-input form-control">{rdfs:comment}</textarea>     
+                        </td>
+                        <td/>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.subClassOf">SubClassOf</td>
+                        <td class="form-group">
+                            <select id="subClassOf" class="selector form-control" rel="rdfs:subClassOf">
+                                    <option value="" disabled="disabled"><span data-localize="select.class">Select class</span></option>
+                                    <option selected="selected" about="?class" typeof="rdfs:Class" property="rdfs:label"/>
+                            </select>
+                        </td>
+                        <td/>
+                    </tr>
+                     <tr class="property-container">
+                        <td><span data-localize="common.hasPart">has Part</span></td>
+                        <td class="form-group">
+                             
+                             <select id="selectPart" class="form-control" rel="dcterms:selector">
+                                    <option  value="" disabled="disabled" data-localize="select.property">Select property</option>
+                                    <option selected="selected" about="?classpart" typeof="rdf:Property" property="rdfs:label"/>
+                                </select>
+                                
+                                <div class='control-group' id="parts" rel="dcterms:hasPart" resource="?part">
+                                
+                                 <div about="?part"><span class="curie" source="{dcterms:source}">{?part}</span> <a href='#' title='Add' class='btn btn-href removeGroup glyphicon glyphicon-minus'></a></div>
+                                
+                                </div>
+                      
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <div class="row">
+                <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary" data-localize="menu.save">Save</button>
+                    <button type="button" onclick="window.location.replace('?view')" class="btn btn-default" data-localize="menu.cancel">Cancel</button>
+                    <button type="button" onclick="calli.deleteResource(event)" class="btn btn-danger" data-localize="menu.delete">Delete</button>
+                </div>
+        </div>
+        
+        </form>
+    </div>
+</body>
+</html>

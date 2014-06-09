@@ -4,7 +4,7 @@ PlainLiteral input
 @extends abstractinput
 @final
 @example
-<a href="#" id="PlainLiteral" data-type="PlainLiteral" data-pk="1">awesome</a>
+<a href="#" id="PlainLiteral" data-type="PlainLiteral">awesome</a>
 <script>
 $(function(){
     $('#PlainLiteral').editable({
@@ -23,15 +23,13 @@ $(function(){
         this.init('PlainLiteral', options, PlainLiteral.defaults);
     };
 
-    //inherit from Abstract input
+    //inherit from select
     $.fn.editableutils.inherit(PlainLiteral, $.fn.editabletypes.select);
+    
     //$.fn.editableutils.inherit(PlainLiteral, $.fn.editabletypes.abstractinput);
     
     $.extend(PlainLiteral.prototype, {
         value2input: function(value,element) {
-            
-            console.log("value2input");
-            
             if(!value) {
                return;
             }

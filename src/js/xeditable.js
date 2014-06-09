@@ -2825,7 +2825,7 @@ List - abstract class for inputs that have source option loaded from js array or
         Since 1.4.1 key `children` supported to render OPTGROUP (for **select** input only).  
         `[{text: "group1", children: [{value: 1, text: "text1"}, {value: 2, text: "text2"}]}, ...]` 
 
-    	
+        
         @property source 
         @type string | array | object | function
         @default null

@@ -1,0 +1,50 @@
+{
+    "help": {
+        "title": "Callimachus",
+        "menu": "Paavalikko"
+    },
+    "common": {
+        "title":"Otsikko",
+        "description": "Kuvaus",
+        "classes": "Luokat",
+        "properties": "Ominaisuudet",
+        "datatypeProperties": "Attribuutit",
+        "objectProperties": "Assosiaatiot",
+        "datatypeProperty":"Attribuutti",
+        "objectProperty":"Assosiaatio",
+        "property": "Ominaisuus",
+        "lang": "Kieli",
+        "values": "Arvot",
+        "topConcept": "Yläkäsite",
+        "comment": "Kommentti",
+        "subClassOf": "Yläluokka",
+        "label": "Nimi",
+        "subPropertyOf":"Yliominaisuus",
+        "domain":"Tietoelementti",
+        "range":"Arvoalue"
+    },
+    "edit": {
+        "classes":"Muokkaa luokkia",
+        "properties":"Muokkaa ominaisuuksia",
+        "metadata":"Muokkaa metatietoja"
+    },
+    "add": {
+        "class":"Lisää luokka",
+        "property":"Lisää ominaisuus"
+    },
+    "menu": {
+        "edit":"Muokkaa",
+        "save":"Tallenna",
+        "cancel":"Peru",
+        "delete":"Poista",
+        "create":"Luo"
+    },
+    "create": {
+        "class": "Uusi luokka",
+        "datatypeProperty": "Uusi attribuutti",
+        "objectProperty": "Uusi assosiaatio"
+    },
+    "select": {
+        "class": "Valitse luokka"
+    }
+}

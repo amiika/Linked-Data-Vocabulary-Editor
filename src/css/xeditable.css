@@ -2,6 +2,7 @@
 * In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
 * http://github.com/vitalets/x-editable
 * Copyright (c) 2013 Vitaliy Potapov; Licensed MIT */
+
 .editableform {
     margin-bottom: 0; /* overwrites bootstrap margin */
 }
@@ -45,7 +46,7 @@
    *display: inline;   
 }
 
-.editable-buttons .editable-cancel {
+.editable-buttons .editable-cancel .editable-remove {
    margin-left: 7px; 
 }
 

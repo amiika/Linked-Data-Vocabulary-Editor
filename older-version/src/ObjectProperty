@@ -1,0 +1,20 @@
+@prefix calli: <http://callimachusproject.org/rdf/2009/framework#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a </callimachus/1.3/types/Class> , owl:Class ;
+    dcterms:created "2014-03-05T05:41:32.137Z"^^xsd:dateTime ;
+    dcterms:modified "2014-03-11T13:10:20.766Z"^^xsd:dateTime ;
+    rdfs:label "Object Property" ;
+    calli:administrator </auth/groups/admin> ;
+    calli:author </auth/groups/admin> , </auth/groups/staff> , </auth/groups/users> ;
+    calli:create <objectproperty-create.xhtml> ;
+    calli:edit <objectproperty-edit.xhtml> ;
+    calli:editor </auth/groups/power> , </auth/groups/staff> ;
+    calli:reader </auth/groups/public> , </auth/groups/system> ;
+    calli:subscriber </auth/groups/everyone> ;
+    calli:view <property-view.xhtml> ;
+    rdfs:subClassOf </callimachus/1.3/types/Composite> , </callimachus/1.3/types/Editable> , </callimachus/1.3/types/Serviceable> , </callimachus/1.3/types/Viewable> .

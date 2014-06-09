@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head>
+    <title resource="?this">{dcterms:title}</title>
+    <link rel="edit-form" href="?edit" />
+    <link rel="comments" href="?discussion" />
+    <link rel="version-history" href="?history" />
+    <script type="text/javascript" src="js/multilang.js"/>
+            <script type="text/javascript">
+        // <![CDATA[
+            history.pushState(null, null, $(location).attr('href').replace('?view',''));
+        // ]]>
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"/>
+    <script type="text/javascript" src="js/modules.js"/>
+    <script type="text/javascript">
+        // <![CDATA[
+        
+      
+     $.ajax({
+        headers: { Accept : 'application/sparql-results+xml' },
+        url: 'http://dbpedia.org/sparql',
+        data: { query: "SELECT ?s WHERE { ?s ?p ?o } LIMIT 1"}
+    });
+
+
+     var myApp = angular.module('myApp', ['services'], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('%');
+    $interpolateProvider.endSymbol('%');
+});
+
+
+
+
+            function MyCtrl($scope,$http,SparqlService) {
+            
+            /*
+                SparqlService.query("SELECT ?s WHERE { ?p a ?s }").success(function(data, status) {
+                    console.log(data);
+                });
+            */
+            $scope.name = 'Welcome';
+            
+            }
+            
+        // ]]>
+    </script>
+    <script type="text/javascript" src="js/rdfquerycore.js"/>
+    <script type="text/javascript" src="js/prefixify.js"></script>
+</head>
+<body ng-app="myApp">
+    <div class="container" resource="?this" ng-controller="MyCtrl">
+        <hgroup class="page-header">
+            <h1 property="dcterms:title" />
+            <h2 id="namespace" about="?this">{?this}</h2>
+        </hgroup>
+        <section>
+        <div><h1>test</h1>
+            <div ng-include="'http://localhost:8080/ns/src/templates/class-list.xpl?results&amp;vocab={?this}'"></div>
+        </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" data-localize="common.description">Description</h3>
+                </div>
+                <div class="panel-body">
+                     <p>prefix: <span id="prefix" property="vann:preferredNamespacePrefix" content="?prefix">{vann:preferredNamespacePrefix}</span></p>
+                     <p property="dcterms:description"></p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" data-localize="common.classes">Classes</h3>
+                </div>
+                <div class="panel-body">
+                   <ul class="list-inline" rev="rdfs:isDefinedBy">
+                        <li about="?class" typeof="rdfs:Class">
+                            <a href="?class" class="curie"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title" data-localize="common.properties">Properties</h3>
+                </div>
+                <div class="panel-body">
+                   <h5 data-localize="common.datatypeProperty">Datatype Properties</h5>
+                    <ul class="list-inline" rev="rdfs:isDefinedBy">
+                        <li about="?dproperty" typeof="owl:DatatypeProperty">
+                            <a href="?dproperty" class="curie"></a>
+                        </li>
+                    </ul>
+                    <h5 data-localize="common.objectProperty">Object Properties</h5>
+                    <ul class="list-inline" rev="rdfs:isDefinedBy">
+                        <li about="?oproperty" typeof="owl:ObjectProperty">
+                            <a href="?oproperty" class="curie"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        </div>
+</body>
+</html>

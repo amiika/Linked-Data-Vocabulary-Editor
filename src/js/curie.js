@@ -2,6 +2,7 @@ jQuery(function($){
     
     /* Creates CURIE from URI
        Elements must have @content="?uri" and @class=".curie"
+       Depends on rdfquerycore.js
     */
     
     var namespace = $("#namespace").text();
@@ -17,7 +18,6 @@ jQuery(function($){
       if (elem.is('input')) {
         elem.val(value);
       } else {
-          console.log("this is "+value);
         elem.text(value);
       } 
     }
@@ -33,19 +33,17 @@ jQuery(function($){
         }
         
         if(!uri) uri = element.attr("href");
-        
-        console.log("CURIE from "+uri)
-        
+          
         if(uri) {
             try {
                 var curie = element.createCurie(uri);
-                console.log(curie);
-                console.log("curie "+curie.toString());
                 prefixifyElement(element,curie.toString());
+                
                 if(element.editable) {
-                    console.log("IS EDITABLE!?");
+                    console.log("ELEMENT IS X-EDITABLE");
                     element.editable('setValue',curie);
                 }
+                
                 element.attr("data-value",curie);
              } catch(e) {
                prefixifyElement(element,uri);
@@ -55,33 +53,32 @@ jQuery(function($){
         }
     });
     
-     $(".curie-link").each(function(){
+    /* creates #-links */
+    $(".curie-link").each(function(){
         var element = $(this);
         var uri = element.attr("href");
-        
-        console.log("CURIE-link from "+uri)
         
         if(uri) {
             try {
                 var curie = element.createCurie(uri);
-                console.log("curie "+curie);
                 prefixifyElement(element,curie);
                 element.attr("href","#"+uri.split('#')[1]);
              } catch(e) {
-               prefixifyElement(element,uri);
+               element.attr("href","#"+uri.split('#')[1]);
+               prefixifyElement(element,uri.split('#')[1]);
                console.log(e);
                console.log(element);
              }
         }
     });
     
+    /* creates ids from uris */
     $(".curie-id").each(function(){
         var element = $(this);
         var uri = element.attr("about");
         
         if(uri) {
             try {
-                var curie = element.createCurie(uri);
                 element.attr("id",uri.split('#')[1]);
              } catch(e) {
                console.log(e);
@@ -89,33 +86,5 @@ jQuery(function($){
              }
         }
     });
-    
-    
-    /*
-    $('.curie').change(function(e){
-        var element = $(this);
-        var input = $(this);
-        var value;
-        
-      if (input.is('input')) {
-          value = input.val();
-      } else {
-          value = input.text();
-      } 
-      
-      if(value) {
-      
-        console.log("input val: "+value);
-        console.log(element.xmlns());
-        try {   
-            var curie = element.curie(value);
-            console.log(curie);
-            input.attr("href",curie._string);
-        } catch(e) {
-            console.log(e);
-            input.removeAttr("href");
-        }
-      }
-    });
-    */
+
 });

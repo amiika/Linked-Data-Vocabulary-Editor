@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:src="http://localhost:8080/ns/src/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+<head>
+    <title>New Datatype property</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <script type="text/javascript" src="js/multilang.js"/>
+    <script type="text/javascript" src="js/repeatinput.js"/>
+    <script type="text/javascript" src="js/selecturl.js"/>
+    <script type="text/javascript">
+        // <![CDATA[
+        jQuery(function($){
+            $('#isDefinedBy').append('<span about="' + location.pathname +'"/>'); 
+        });
+        // ]]>
+    </script>
+    
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"/>
+    <link rel="stylesheet" href="css/typeahead.css"/>
+    <script type="text/javascript" src="js/yso-typeahead.js"/>
+</head>
+<body>
+    <div class="container">
+        <hgroup class="page-header">
+            <h1 data-localize="create.datatypeProperty">New Datatype property</h1>
+        </hgroup>
+        <form id="propertyform" role="form" method="POST" action="" enctype="application/rdf+xml" typeof="rdf:Property owl:DatatypeProperty" class="form col-md-6"
+                onsubmit="return calli.saveResourceAs(event,calli.lowerCamelCase($('#label').val()))">
+            <span id="isDefinedBy" rel="rdfs:isDefinedBy">
+                <span about="?vocabulary"/>
+            </span>
+            
+             <table class="table table-condensed">
+               <!-- <thead>
+                    <tr>
+                        <th class="col-sm-3" data-localize="common.property" >Property</th>
+                        <th class="col-sm-7" data-localize="common.values">Values</th>
+                        <th class="col-sm-2" data-localize="common.lang">Lang</th>
+                    </tr>
+                </thead> -->
+                <tbody>
+                    <tr>
+                        <td data-localization="top-concept" data-localize="common.topConcept">Top Concept</td>
+                        <td>
+                        <!--<input type="hidden" rel="dcterms:source" id="source"/>-->
+                        
+                        <div id="source" rel="dcterms:source">
+                            <div about="?source">
+                            </div>
+                        </div>
+
+                        <input type="text" class="form-control" name="query" id="query" required="required" placeholder="Find top concept"/>
+                     <!--   <span id="sourceURI"><span id="sourceLabel" property="rdfs:label"/></span> -->
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.label">Label</span> <a  href="#" title="Add" class="addremove glyphicon glyphicon-refresh"></a></td>
+                        <td class="form-group">
+                            <input placeholder="Write name" type="text" class="property-input form-control" id="label" value="{rdfs:label}" required="required" autofocus="autofocus" />
+                        </td>
+                        <td class="form-group">
+                            <select class="form-control property-input-lang">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.comment">Comment</span></td>
+                        <td class="form-group">
+                            <textarea placeholder="Write comment" id="comment" class="resize property-input form-control">{rdfs:comment}</textarea>     
+                        </td>
+                        <td class="form-group">
+                            <select class="area-lang-select form-control property-input-lang">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.subPropertyOf">SubPropertyOf</span></td>
+                        <td class="form-group">
+                            <select id="selectSubProp" class="selector form-control" rel="rdfs:subPropertyOf">
+                                    <option value="" disabled="disabled">Select</option>
+                                    <option selected="selected" about="?property" typeof="src:DatatypeProperty" property="rdfs:label"/>
+                            </select>
+                           <input type="url" class="property-input form-control" id="subPropertyOf" rel="rdfs:subPropertyOf" autofocus="autofocus"/>
+                        </td>
+                        <td/>
+                        <td style="vertical-align:middle"/>
+                    </tr>                    
+                    <tr>
+                        <td><span data-localize="common.domain">Domain</span></td>
+                        <td class="form-group">
+                            <select id="selectDomain" class="selector form-control" rel="rdfs:domain">
+                                    <option value="" disabled="disabled">Select</option>
+                                    <option selected="selected" about="?property" typeof="src:Class" property="rdfs:label"/>
+                              </select>
+                           <input type="url" class="form-control" id="domain" rel="rdfs:domain" autofocus="autofocus"/>
+                        </td>
+                        <td/>
+                        <td style="vertical-align:middle"/>
+                    </tr>
+                    <tr>
+                        <td><span data-localize="common.range">Range</span></td>
+                        <td class="form-group">
+                            <select id="selectRange" class="selector form-control" rel="rdfs:range">
+                                <option data-about="http://www.w3.org/2001/XMLSchema#string" selected="selected">String</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#int">Int</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#long">Long</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#date">Date</option>
+                                <option data-about="http://www.w3.org/2001/XMLSchema#datetime">Datetime</option>
+                                <option data-about="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">PlainLiteral</option>
+                          </select>
+                           <input type="url" class="prefixify form-control" id="range" rel="rdfs:range" autofocus="autofocus"/>
+                        </td>
+                        <td/>
+                        <td style="vertical-align:middle"/>
+                    </tr>
+                </tbody>
+            </table>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-success" data-localize="menu.create" >Create</button>
+                    </div>
+               </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:vann="http://purl.org/vocab/vann/">
+
+<head>
+    <title>New Class</title>
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="css/xeditable.css"/>
+        
+        <script type="text/javascript" src="js/multilang.js"/>
+        
+        <script type="text/javascript" src="js/selecturl.js"/>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js"/>
+        <script type="text/javascript">
+        // <![CDATA[
+
+        jQuery(function($){
+            $('#isDefinedBy').append('<span about="' + location.pathname +'"/>'); 
+            
+            $("#selectPart").on('change', function() {
+            
+            console.log($('option:selected', this).data('about'));
+            console.log($(this).val());
+            
+            
+            var uri = $('option:selected', this).data('about');
+            var selected = $(this).val();
+            //$(this).val([]);
+            $('option',this).eq(0).prop('selected', true);
+            if(uri) {
+            
+                $("#parts").append("<div class='control-group' resource='"+uri+"'><div class='controls'>"+selected+"</div><div class='controls'><a href='#' title='Add' class='btn btn-href removeGroup glyphicon glyphicon-minus'></div></div>");      }
+                $(".removeGroup").on("click",function(){$(this).closest(".control-group").remove();});
+      
+        
+        });
+            
+        });
+        
+        
+        
+        
+        // ]]>
+    </script>
+    <script type="text/javascript" src="js/repeatinput.js"/>
+    <link rel="stylesheet" href="css/typeahead.css"/>
+    <script type="text/javascript" src="js/yso-typeahead.js"/>
+</head>
+<body>
+    <div class="container">
+
+        <hgroup class="page-header">
+            <h1 data-localize="create.class">New Class</h1>
+        </hgroup>
+        <form role="form" method="POST" action="" enctype="application/rdf+xml" typeof="rdfs:Class" class="col-md-8"
+                onsubmit="return calli.saveResourceAs(event,calli.upperCamelCase($('#label').val()))">
+            <span id="isDefinedBy" rel="rdfs:isDefinedBy"></span>
+            <?graph uri="http://diipadaa.com"?>
+            <table class="table table-striped">
+                <thead>
+                   <!-- <tr>
+                        <th class="col-sm-3" data-localize="common.property" >Property</th>
+                        <th class="col-sm-7" data-localize="common.values">Values</th>
+                        <th class="col-sm-2" data-localize="common.lang">Lang</th>
+                    </tr> -->
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-localization="top-concept" data-localize="common.topConcept">Top Concept</td>
+                        <td>
+                        <div id="source" rel="dcterms:source">
+                            <div about="?source">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" name="query" id="query" required="required" placeholder="Find top concept"/></td>
+                        <td></td>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.label">Label</span>  <a  href="#" title="Add" class="addGroup glyphicon glyphicon-plus"/> <a  href="#" title="Add" class="addremove glyphicon glyphicon-refresh"></a></td>
+                        <td class="form-group">
+                            <input placeholder="Add Classname" type="text" class="property-input form-control" id="label" value="{rdfs:label}" required="required" autofocus="autofocus" />
+                        </td>
+                        <td class="form-group">
+                            <select class="form-control property-input-lang">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.comment">Comment</span></td>
+                        <td class="form-group">
+                            <textarea placeholder="Write comment" id="comment" class="resize property-input form-control">{rdfs:comment}</textarea>     
+                        </td>
+                        <td class="form-group">
+                            <select class="area-lang-select form-control property-input-lang">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td data-localize="common.subClassOf">SubClassOf</td>
+                        <td class="form-group">
+                            <select id="subClassOf" class="form-control" rel="rdfs:subClassOf">
+                                    <option value="" disabled="disabled" data-localize="select.class">Select class</option>
+                                    <option selected="selected" about="?class" typeof="rdfs:Class" property="rdfs:label"/>
+                            </select>
+                            <!--<input type="url" class="prefixify form-control full" id="superclass" rel="rdfs:subClassOf" autofocus="autofocus" />-->
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.subject">Subject</span> <a  href="#" title="Add" class="addremove glyphicon glyphicon-refresh"></a></td>
+                        <td class="form-group">
+                            <input placeholder="Add subject" type="text" class="property-input form-control" id="subject" value="{dcterms:subject}" autofocus="autofocus" />
+                        </td>
+                        <td class="form-group">
+                            <select class="form-control property-input-lang">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="property-container">
+                        <td><span data-localize="common.hasPart">has Part</span></td>
+                        <td class="form-group">
+                               <select id="selectPart" class="form-control" rel="dcterms:hasPart">
+                                    <option value="" disabled="disabled" data-localize="select.property">Select property</option>
+                                    <option selected="selected" about="?class" typeof="rdf:Property" property="rdfs:label"/>
+                                </select>
+                            
+                                <div id="parts" rel="dcterms:hasPart">
+                                 <div about="?source"/>
+                                </div>
+                      
+                            <!--<input type="url" class="prefixify form-control full" id="superclass" rel="rdfs:subClassOf" autofocus="autofocus" />-->
+                        </td>
+                        <td/>
+                    </tr>
+                </tbody>
+            </table>
+                
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-success" data-localize="menu.create" >Create</button>
+                    </div>
+               </div>
+                
+        </form>
+    </div>
+</body>
+</html>

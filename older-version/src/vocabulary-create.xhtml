@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:vann="http://purl.org/vocab/vann/">
+<head>
+    <title>New Vocabulary</title>
+    <script type='text/javascript' src="js/help.js"/>
+</head>
+<body>
+    <div class="container">
+        <hgroup class="page-header">
+            <h1>New Vocabulary</h1>
+        </hgroup>
+        <form role="form" method="POST" action="" enctype="application/rdf+xml" typeof="" class="row"
+                onsubmit="return calli.saveResourceAs(event,calli.slugify($('#label').val())+'/')">
+            <fieldset class="col-sm-4">
+                <div class="form-group">
+                    <label for="label">Label</label>
+                    <i class="help glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="Label will be used to create the URI for the vocabulary"></i>
+                    <input type="text" class="form-control" id="label" value="{rdfs:label}" required="required" autofocus="autofocus" />
+                </div>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <i class="help glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="right" title="Title is the full name of the vocabulary"></i>
+                    <input type="text" class="form-control" id="title" value="{dcterms:title}" required="required" autofocus="autofocus" />
+                </div>
+                <div class="form-group">
+                    <label for="label">Preferred prefix</label>
+                    <input type="text" class="form-control" id="label" value="{vann:preferredNamespacePrefix}" required="required" autofocus="autofocus" />
+                </div>
+                <div class="form-group">
+                    <label for="comment">Description</label>
+                    <textarea id="comment" class="form-control">{dcterms:description}</textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Create</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
