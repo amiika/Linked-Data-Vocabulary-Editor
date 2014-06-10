@@ -3,7 +3,7 @@ Linked-Data-Vocabulary-Editor
 
 Collaborative Linked Data Vocabulary Editor and publishing platform based on Callimachus
 
-Install instructions:
+Installation instructions:
 
 1. Go to http://callimachusproject.org/ and install the callimachus following the up to date documentation.
 2. Read the documentation: http://callimachusproject.org/documentation.xhtml?view ;)
